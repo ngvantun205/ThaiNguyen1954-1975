@@ -22,8 +22,8 @@
   --color-sepia-earth: #4A3B32;
   --color-sepia-light: #8C786A;
   
-  --font-serif: var(--font-playfair), Georgia, Cambria, "Times New Roman", serif;
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-lora), Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: var(--font-be-vietnam), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 :root {

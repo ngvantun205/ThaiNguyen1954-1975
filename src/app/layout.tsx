@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Lora, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin", "vietnamese"],
   display: "swap",
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const beVietnamPro = Be_Vietnam_Pro({
+  variable: "--font-be-vietnam",
   subsets: ["latin", "vietnamese"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
@@ -55,7 +55,7 @@ export default function RootLayout({
     <html
       lang="vi"
       data-scroll-behavior="smooth"
-      className={`${playfair.variable} ${inter.variable} h-full scroll-smooth`}
+      className={`${lora.variable} ${beVietnamPro.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#FDFBF7] text-[#2D3142] antialiased selection:bg-[#DAA520]/30 selection:text-[#8B0000]">
         <Header />
