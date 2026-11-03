@@ -51,28 +51,37 @@ export default function MediaGallery() {
             onClick={() => setSelectedMedia(item)}
             className="rounded-2xl bg-[#F7F3EA] border-2 border-[#E8E1D3] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#DAA520] transition-all cursor-pointer group flex flex-col justify-between"
           >
-            {/* Visual Header / Mock Graphic */}
+            {/* Visual Header / Thumbnail */}
             <div className="relative h-56 bg-gradient-to-br from-[#2D3142] via-[#1E212D] to-[#2D3142] flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#DAA520_1px,transparent_1px)] [background-size:16px_16px]" />
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors pointer-events-none" />
+              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#DAA520_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-              {/* Center icon representation */}
-              <div className="w-16 h-16 rounded-full bg-[#8B0000]/80 border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              {/* Center icon representation (khi chưa có ảnh hoặc dạng video) */}
+              <div className="w-14 h-14 rounded-full bg-[#8B0000]/85 border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] group-hover:scale-110 transition-transform duration-300 shadow-lg relative z-10">
                 {item.category === "video" ? (
-                  <Play className="w-8 h-8 fill-[#DAA520]" />
+                  <Play className="w-7 h-7 fill-[#DAA520]" />
                 ) : item.category === "relic" ? (
-                  <Shield className="w-8 h-8" />
+                  <Shield className="w-7 h-7" />
                 ) : (
-                  <ImageIcon className="w-8 h-8" />
+                  <ImageIcon className="w-7 h-7" />
                 )}
               </div>
 
               {/* Year badge */}
-              <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8B0000] text-[#FDFBF7] text-xs font-bold shadow-xs">
+              <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8B0000] text-[#FDFBF7] text-xs font-bold shadow-xs z-10">
                 {item.year}
               </span>
 
               {/* Category pill */}
-              <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#DAA520] text-[#1E212D] text-xs font-bold uppercase tracking-wider">
+              <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#DAA520] text-[#1E212D] text-xs font-bold uppercase tracking-wider z-10">
                 {item.category === "relic" ? "Hiện vật" : item.category === "video" ? "Video" : "Ảnh tư liệu"}
               </span>
             </div>
@@ -131,20 +140,31 @@ export default function MediaGallery() {
                 </h3>
 
                 {/* Media Showcase Box */}
-                <div className="h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-[#1E212D] to-[#2D3142] border border-[#DAA520]/40 flex flex-col items-center justify-center p-6 text-center text-[#FDFBF7] relative">
-                  <div className="w-20 h-20 rounded-full bg-[#8B0000] border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] mb-3">
-                    {selectedMedia.category === "video" ? (
-                      <Play className="w-10 h-10 fill-[#DAA520]" />
-                    ) : (
-                      <ImageIcon className="w-10 h-10" />
-                    )}
+                <div className="h-64 sm:h-80 rounded-2xl bg-gradient-to-br from-[#1E212D] to-[#2D3142] border border-[#DAA520]/40 flex flex-col items-center justify-center p-6 text-center text-[#FDFBF7] relative overflow-hidden">
+                  <img
+                    src={selectedMedia.url}
+                    alt={selectedMedia.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+                  <div className="relative z-10 p-4 flex flex-col items-center">
+                    <div className="w-16 h-16 rounded-full bg-[#8B0000]/90 border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] mb-3 shadow-lg">
+                      {selectedMedia.category === "video" ? (
+                        <Play className="w-8 h-8 fill-[#DAA520]" />
+                      ) : (
+                        <ImageIcon className="w-8 h-8" />
+                      )}
+                    </div>
+                    <p className="text-sm font-semibold text-[#DAA520] drop-shadow-sm">
+                      Tư liệu Số hoá Lịch sử Kháng chiến Thái Nguyên
+                    </p>
+                    <p className="text-xs text-[#D1D5DB] mt-1 max-w-md drop-shadow-xs">
+                      {selectedMedia.source}
+                    </p>
                   </div>
-                  <p className="text-sm font-semibold text-[#DAA520]">
-                    Tư liệu Số hoá Lịch sử Kháng chiến Thái Nguyên
-                  </p>
-                  <p className="text-xs text-[#D1D5DB] mt-1 max-w-md">
-                    {selectedMedia.source}
-                  </p>
                 </div>
 
                 {/* Comprehensive Description */}

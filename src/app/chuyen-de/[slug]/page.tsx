@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HISTORICAL_TOPICS, MARTYRS_915_SAMPLE } from "@/lib/historical-data";
+import SafeImage from "@/components/common/SafeImage";
 import {
   ArrowLeft,
   ArrowRight,
@@ -97,6 +98,17 @@ export default async function TopicDetailPage({
         <p className="text-base sm:text-lg text-[#4A3B32] leading-relaxed border-t border-[#E8E1D3] pt-6 font-normal">
           {topic.summary}
         </p>
+
+        {/* Topic Hero Image (Tự động hiển thị khi thêm ảnh vào public/images/topics/) */}
+        {topic.heroImage && (
+          <div className="relative w-full h-64 sm:h-96 rounded-2xl overflow-hidden border-2 border-[#DAA520]/50 shadow-md bg-[#2D3142]/5">
+            <SafeImage
+              src={topic.heroImage}
+              alt={topic.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
 
         {/* 3 Quick Stats Callouts */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">

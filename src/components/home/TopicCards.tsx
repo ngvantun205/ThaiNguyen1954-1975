@@ -58,6 +58,20 @@ export default function TopicCards() {
                 </p>
               </div>
 
+              {/* Optional Topic Thumbnail */}
+              {topic.heroImage && (
+                <div className="relative h-44 rounded-xl overflow-hidden border border-[#E8E1D3] bg-[#2D3142]/5">
+                  <img
+                    src={topic.heroImage}
+                    alt={topic.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.parentElement?.classList.add("hidden");
+                    }}
+                  />
+                </div>
+              )}
+
               {/* Summary */}
               <p className="text-sm text-[#4A3B32] leading-relaxed line-clamp-3">
                 {topic.summary}

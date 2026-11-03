@@ -7,6 +7,16 @@ import { Flame, ArrowRight, ShieldAlert, Award, Compass } from "lucide-react";
 export default function HeroSection() {
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1E212D] via-[#2D3142] to-[#1E212D] text-[#FDFBF7] py-20 px-4 sm:px-6 lg:px-8">
+      {/* Optional Hero Background Image */}
+      <img
+        src="/images/hero/hero-banner.jpg"
+        alt="Chiến sĩ pháo cao xạ Thái Nguyên"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay pointer-events-none"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
+      />
+
       {/* Background Decorative Graphic Elements & Radial Lights */}
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#DAA520_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#8B0000]/25 rounded-full blur-[120px] pointer-events-none" />

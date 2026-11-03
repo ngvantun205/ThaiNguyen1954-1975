@@ -10,7 +10,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "Phên dậu bảo vệ Thủ đô, yết hầu giao thông và trung tâm công nghiệp của Khu tự trị Việt Bắc",
     timeframe: "1964 – 1965",
     badge: "Bối cảnh Chiến lược",
-    heroImage: "/images/hero/chien-luoc.jpg",
+    heroImage: "/images/topics/01-vi-the-chien-luoc.jpg",
     summary:
       "Ngày 1/7/1965, Thái Nguyên hợp nhất với Bắc Kạn thành tỉnh Bắc Thái. TP. Thái Nguyên vừa là tỉnh lỵ vừa là trung tâm chính trị, kinh tế, văn hóa của Khu tự trị Việt Bắc. Nơi đây hội tụ Bộ Tư lệnh Quân khu Việt Bắc, Khu công nghiệp Gang thép và tuyến đường giao thông huyết mạch chi viện cho tiền tuyến lớn.",
     keyStats: [
@@ -73,7 +73,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "Vừa sản xuất, vừa chiến đấu – Tay búa tay súng, tay cày tay súng kiên cường bảo vệ hậu phương",
     timeframe: "1965 – 1968",
     badge: "Phòng Không & Sản Xuất",
-    heroImage: "/images/hero/chuyen-huong.jpg",
+    heroImage: "/images/topics/02-chuyen-huong-kinh-te.jpg",
     summary:
       "Thực hiện chủ trương của Trung ương, Thái Nguyên đã khẩn trương chuyển từ thời bình sang thời chiến. Mạng lưới phòng không nhân dân kỳ vĩ với 146 trận địa, hơn 210.000m giao thông hào và gần 80.000 hầm trú ẩn được xây dựng thần tốc.",
     keyStats: [
@@ -138,7 +138,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "Từ trận đầu cầu Gia Bẩy, máy bay thứ 1.000 đến kỳ tích hạ gục 2 pháo đài bay B-52",
     timeframe: "1965 – 1972",
     badge: "Chiến Công Hiển Hách",
-    heroImage: "/images/hero/tran-danh.jpg",
+    heroImage: "/images/topics/03-nhung-tran-danh-lich-su.jpg",
     summary:
       "Lực lượng phòng không ba thứ quân Thái Nguyên đã kiên cường đánh trả hàng ngàn lượt oanh kích tàn khốc của không quân Mỹ, bắn rơi 61 máy bay hiện đại, trong đó có chiến công bắn rơi máy bay thứ 1.000 trên miền Bắc và hạ gục 2 'pháo đài bay' B-52 huyền thoại.",
     keyStats: [
@@ -217,7 +217,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "60 cánh hoa bất tử đêm Noel 1972 – Biểu tượng sáng ngời của chủ nghĩa anh hùng cách mạng",
     timeframe: "06/1972 – 12/1972",
     badge: "Khúc Tráng Ca Bất Tử",
-    heroImage: "/images/hero/dai-doi-915.jpg",
+    heroImage: "/images/topics/04-khuc-hung-ca-dai-doi-915.jpg",
     summary:
       "Đêm 24/12/1972, trong khi đang khẩn trương giải tỏa hàng vạn tấn hàng viện trợ quân sự tại ga Lưu Xá để chi viện cho đồng bào miền Nam, 60 cán bộ, đội viên Đại đội 915 TNXP đã anh dũng hy sinh dưới làn bom rải thảm của máy bay B-52 Mỹ.",
     keyStats: [
