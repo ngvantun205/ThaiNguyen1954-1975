@@ -72,3 +72,4 @@ export interface HistoricalEvent {
   category: "military" | "economic" | "memorial" | "diplomatic";
   featured?: boolean;
 }
+

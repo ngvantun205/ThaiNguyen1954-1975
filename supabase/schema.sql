@@ -86,3 +86,4 @@ GRANT EXECUTE ON FUNCTION public.light_a_candle() TO anon, authenticated;
 -- 2. Dán toàn bộ nội dung file này và bấm "Run".
 -- 3. Lấy URL và Anon Key dán vào file .env.local trong dự án Next.js.
 -- =========================================================================
+
