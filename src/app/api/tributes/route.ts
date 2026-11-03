@@ -11,20 +11,22 @@ export async function GET() {
       .limit(100);
 
     if (error) {
+      if (error.code === "PGRST205") {
+        console.warn("Chưa chạy file schema.sql trong Supabase SQL Editor (PGRST205).");
+        return NextResponse.json({
+          tributes: [],
+          warning: "Bảng memorial_tributes chưa tồn tại. Vui lòng chạy file supabase/schema.sql trên Supabase Dashboard.",
+        });
+      }
+
       console.error("Supabase memorial_tributes GET error:", error);
-      return NextResponse.json(
-        { error: error.message, tributes: [] },
-        { status: 500 }
-      );
+      return NextResponse.json({ tributes: [], error: error.message });
     }
 
     return NextResponse.json({ tributes: data || [] });
   } catch (error: any) {
     console.error("Tributes GET error:", error);
-    return NextResponse.json(
-      { error: error?.message || "Internal server error", tributes: [] },
-      { status: 500 }
-    );
+    return NextResponse.json({ tributes: [], error: error?.message });
   }
 }
 
@@ -55,6 +57,16 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
+      if (error.code === "PGRST205") {
+        return NextResponse.json(
+          {
+            error: "Bảng memorial_tributes chưa được tạo trong Supabase. Vui lòng vào SQL Editor chạy file schema.sql.",
+            success: false,
+          },
+          { status: 400 }
+        );
+      }
+
       console.error("Supabase insert error:", error);
       return NextResponse.json(
         { error: error.message, success: false },

@@ -54,6 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
+      data-scroll-behavior="smooth"
       className={`${playfair.variable} ${inter.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#FDFBF7] text-[#2D3142] antialiased selection:bg-[#DAA520]/30 selection:text-[#8B0000]">

@@ -10,11 +10,17 @@ export async function GET() {
       .single();
 
     if (error) {
+      // PGRST205: Bảng chưa được tạo trong Supabase
+      if (error.code === "PGRST205") {
+        console.warn("Chưa chạy file schema.sql trong Supabase SQL Editor (PGRST205).");
+        return NextResponse.json({
+          count: 60,
+          warning: "Bảng candle_stats chưa tồn tại. Vui lòng chạy file supabase/schema.sql trên Supabase Dashboard.",
+        });
+      }
+
       console.error("Supabase candle_stats GET error:", error);
-      return NextResponse.json(
-        { error: error.message, count: 0 },
-        { status: 500 }
-      );
+      return NextResponse.json({ count: 60, error: error.message });
     }
 
     return NextResponse.json({
@@ -22,10 +28,7 @@ export async function GET() {
     });
   } catch (error: any) {
     console.error("Candle API error:", error);
-    return NextResponse.json(
-      { error: error?.message || "Internal server error", count: 0 },
-      { status: 500 }
-    );
+    return NextResponse.json({ count: 60, error: error?.message });
   }
 }
 
@@ -41,7 +44,7 @@ export async function POST() {
       });
     }
 
-    // 2. Nếu RPC chưa được khởi tạo, thực hiện update trực tiếp bảng candle_stats
+    // 2. Nếu RPC chưa có hoặc lỗi, thử update trực tiếp bảng candle_stats
     const { data: currentData, error: selectError } = await supabase
       .from("candle_stats")
       .select("total_candles")
@@ -49,7 +52,15 @@ export async function POST() {
       .single();
 
     if (selectError) {
-      console.error("Error reading candle_stats:", selectError);
+      if (selectError.code === "PGRST205") {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Bảng candle_stats chưa được tạo trong Supabase. Vui lòng vào SQL Editor chạy file schema.sql.",
+          },
+          { status: 400 }
+        );
+      }
       return NextResponse.json(
         { error: selectError.message, success: false },
         { status: 500 }
@@ -63,7 +74,6 @@ export async function POST() {
       .eq("id", 1);
 
     if (updateError) {
-      console.error("Error updating candle_stats:", updateError);
       return NextResponse.json(
         { error: updateError.message, success: false },
         { status: 500 }
