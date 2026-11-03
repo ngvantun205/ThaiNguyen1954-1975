@@ -20,27 +20,30 @@ const beVietnamPro = Be_Vietnam_Pro({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Thái Nguyên (1965 – 1972)",
-    default: "Thái Nguyên (1965 – 1972) | Phên Dậu Việt Bắc – Khúc Hùng Ca Bất Tử",
+    template: "%s | Thái Nguyên (1954 – 1975)",
+    default: "Thái Nguyên (1954 – 1975) | Bảo Tàng Tư Liệu Lịch Sử Số",
   },
   description:
-    "Trang tư liệu và tưởng niệm lịch sử Thái Nguyên giai đoạn 1965 – 1972: Phên dậu Việt Bắc, trái tim công nghiệp, khúc hùng ca kiên cường chống chiến tranh phá hoại của đế quốc Mỹ.",
+    "Bảo tàng tư liệu lịch sử số Thái Nguyên (1954 – 1975): Phên dậu Việt Bắc, trái tim công nghiệp nặng, khúc hùng ca chống chiến tranh phá hoại và bản tráng ca Đại đội 915 anh hùng.",
   keywords: [
+    "Thái Nguyên 1954 1975",
     "Thái Nguyên 1965 1972",
+    "Bảo tàng số Thái Nguyên",
     "Lịch sử Thái Nguyên",
+    "Khu Gang thép Thái Nguyên",
     "Đại đội 915",
     "Ga Lưu Xá",
     "Cầu Gia Bẩy",
     "Trung đoàn 210",
     "Trung đoàn 256",
     "Điện Biên Phủ trên không",
-    "Thắp nến tri ân",
+    "Tư liệu lịch sử Việt Nam",
   ],
-  authors: [{ name: "Bảo tàng Số Lịch sử Thái Nguyên" }],
+  authors: [{ name: "Bảo tàng Tư liệu Lịch sử Số Thái Nguyên" }],
   openGraph: {
-    title: "Thái Nguyên (1965 – 1972) | Phên Dậu Việt Bắc – Khúc Hùng Ca Bất Tử",
+    title: "Thái Nguyên (1954 – 1975) | Bảo Tàng Tư Liệu Lịch Sử Số",
     description:
-      "Tái hiện hào khí chống Mỹ cứu nước của quân dân Thái Nguyên: 61 máy bay Mỹ bị bắn rơi, 40.827 thanh niên nhập ngũ và khúc tráng ca bất tử của 60 liệt sĩ TNXP Đại đội 915.",
+      "Nền tảng lưu trữ và trưng bày tư liệu lịch sử số Thái Nguyên 1954 – 1975: Dòng thời gian, bản đồ tọa độ chiến trường, 4 chuyên đề nghiên cứu và không gian tưởng niệm 60 liệt sĩ TNXP Đại đội 915.",
     type: "website",
     locale: "vi_VN",
   },
@@ -57,7 +60,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${lora.variable} ${beVietnamPro.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#FDFBF7] text-[#2D3142] antialiased selection:bg-[#DAA520]/30 selection:text-[#8B0000]">
+      <body className="min-h-full flex flex-col bg-[#F3EBDD] text-[#242321] antialiased selection:bg-[#8D2926]/20 selection:text-[#8D2926]">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

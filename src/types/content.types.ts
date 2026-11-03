@@ -60,8 +60,10 @@ export interface MediaItem {
   url: string;
   youtubeId?: string;
   year: string;
+  location?: string;
   description: string;
   source: string;
+  significance?: string;
 }
 
 export interface HistoricalEvent {
@@ -72,5 +74,25 @@ export interface HistoricalEvent {
   description: string;
   category: "military" | "economic" | "memorial" | "diplomatic";
   featured?: boolean;
+  image?: string;
+  era?: "1954-1964" | "1965-1968" | "1969-1972" | "1973-1975";
 }
 
+export interface HistoricalLocation {
+  id: string;
+  name: string;
+  historicName?: string;
+  district: string;
+  category: "battlefield" | "logistics" | "industry" | "memorial" | "command";
+  categoryLabel: string;
+  coordinates: {
+    x: number; // percentage 0-100 on stylized interactive map
+    y: number; // percentage 0-100 on stylized interactive map
+  };
+  realGeo?: string; // approximate real-world coordinates e.g. "21.579° N, 105.844° E"
+  yearRange: string;
+  description: string;
+  significance: string;
+  image?: string;
+  relatedSlug?: string;
+}

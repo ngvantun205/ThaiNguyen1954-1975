@@ -45,25 +45,24 @@ export default function MemorialClient() {
 
   const handleTributeAdded = (newTribute: Tribute) => {
     setTributes((prev) => {
-      // Tránh trùng lặp nếu Realtime đã chèn trước
       if (prev.some((t) => t.id === newTribute.id)) return prev;
       return [newTribute, ...prev];
     });
   };
 
   return (
-    <div className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       {/* Tiêu đề & Không gian thiêng liêng */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8B0000] text-[#DAA520] text-xs font-bold uppercase tracking-widest border border-[#DAA520] shadow-sm">
-          <Flame className="w-3.5 h-3.5 fill-[#DAA520]" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8D2926] text-[#FAF5ED] text-xs font-mono font-bold uppercase tracking-widest border border-[#A88A52]/40 shadow-xs">
+          <Flame className="w-3.5 h-3.5 fill-[#A88A52] text-[#A88A52]" />
           <span>Không Gian Tưởng Niệm & Tri Ân Thiêng Liêng</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-black text-[#2D3142] tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#242321] tracking-tight">
           Đời Đời Nhớ Ơn Các Anh Hùng Liệt Sĩ
         </h1>
-        <p className="text-base sm:text-lg text-[#4A3B32] leading-relaxed">
-          Nơi hội tụ tấm lòng thành kính, sự tri ân của thế hệ hôm nay gửi tới 60 liệt sĩ TNXP Đại đội 915
+        <p className="text-base sm:text-lg text-[#4A4742] leading-relaxed">
+          Nơi hội tụ tấm lòng thành kính, sự tri ân của các thế hệ hôm nay gửi tới 60 liệt sĩ TNXP Đại đội 915
           và các cán bộ chiến sĩ, đồng bào Thái Nguyên đã cống hiến tuổi xuân vì Tổ quốc.
         </p>
       </div>
@@ -81,7 +80,7 @@ export default function MemorialClient() {
       {/* 3. Tường lưu bút với dữ liệu thực từ Supabase */}
       <section className="pt-6">
         {isLoading ? (
-          <div className="text-center py-10 text-sm text-[#8C786A] italic">
+          <div className="text-center py-10 text-sm text-[#4A4742] italic">
             Đang tải dữ liệu lưu bút từ hệ thống Supabase...
           </div>
         ) : (
