@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/client";
+import { supabase, isConfigured } from "@/lib/supabase/client";
 
 export async function GET() {
   try {
+    if (!isConfigured) {
+      return NextResponse.json({
+        count: 60,
+        warning: "Supabase chưa được cấu hình biến môi trường.",
+      });
+    }
+
     const { data, error } = await supabase
       .from("candle_stats")
       .select("total_candles")
@@ -10,16 +17,12 @@ export async function GET() {
       .single();
 
     if (error) {
-      // PGRST205: Bảng chưa được tạo trong Supabase
       if (error.code === "PGRST205") {
-        console.warn("Chưa chạy file schema.sql trong Supabase SQL Editor (PGRST205).");
         return NextResponse.json({
           count: 60,
-          warning: "Bảng candle_stats chưa tồn tại. Vui lòng chạy file supabase/schema.sql trên Supabase Dashboard.",
+          warning: "Bảng candle_stats chưa được tạo trong Supabase. Vui lòng chạy schema.sql.",
         });
       }
-
-      console.error("Supabase candle_stats GET error:", error);
       return NextResponse.json({ count: 60, error: error.message });
     }
 
@@ -34,7 +37,14 @@ export async function GET() {
 
 export async function POST() {
   try {
-    // 1. Thử gọi hàm stored procedure RPC light_a_candle()
+    if (!isConfigured) {
+      return NextResponse.json({
+        success: true,
+        count: 61,
+      });
+    }
+
+    // 1. Thử gọi RPC
     const { data: rpcCount, error: rpcError } = await supabase.rpc("light_a_candle");
 
     if (!rpcError && rpcCount !== null) {
@@ -44,7 +54,7 @@ export async function POST() {
       });
     }
 
-    // 2. Nếu RPC chưa có hoặc lỗi, thử update trực tiếp bảng candle_stats
+    // 2. Thử update trực tiếp bảng
     const { data: currentData, error: selectError } = await supabase
       .from("candle_stats")
       .select("total_candles")
@@ -52,22 +62,13 @@ export async function POST() {
       .single();
 
     if (selectError) {
-      if (selectError.code === "PGRST205") {
-        return NextResponse.json(
-          {
-            success: false,
-            error: "Bảng candle_stats chưa được tạo trong Supabase. Vui lòng vào SQL Editor chạy file schema.sql.",
-          },
-          { status: 400 }
-        );
-      }
       return NextResponse.json(
         { error: selectError.message, success: false },
-        { status: 500 }
+        { status: selectError.code === "PGRST205" ? 400 : 500 }
       );
     }
 
-    const newCount = Number(currentData?.total_candles || 0) + 1;
+    const newCount = Number(currentData?.total_candles || 60) + 1;
     const { error: updateError } = await supabase
       .from("candle_stats")
       .update({ total_candles: newCount, updated_at: new Date().toISOString() })

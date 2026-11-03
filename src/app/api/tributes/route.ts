@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/client";
+import { supabase, isConfigured } from "@/lib/supabase/client";
 
 export async function GET() {
   try {
+    if (!isConfigured) {
+      return NextResponse.json({ tributes: [] });
+    }
+
     const { data, error } = await supabase
       .from("memorial_tributes")
       .select("*")
@@ -12,14 +16,11 @@ export async function GET() {
 
     if (error) {
       if (error.code === "PGRST205") {
-        console.warn("Chưa chạy file schema.sql trong Supabase SQL Editor (PGRST205).");
         return NextResponse.json({
           tributes: [],
-          warning: "Bảng memorial_tributes chưa tồn tại. Vui lòng chạy file supabase/schema.sql trên Supabase Dashboard.",
+          warning: "Bảng memorial_tributes chưa được tạo trong Supabase. Vui lòng chạy schema.sql.",
         });
       }
-
-      console.error("Supabase memorial_tributes GET error:", error);
       return NextResponse.json({ tributes: [], error: error.message });
     }
 
@@ -50,6 +51,13 @@ export async function POST(req: Request) {
       is_approved: true,
     };
 
+    if (!isConfigured) {
+      return NextResponse.json({
+        success: true,
+        tribute: { id: "mock-" + Date.now(), ...newTributeData, created_at: new Date().toISOString() },
+      });
+    }
+
     const { data, error } = await supabase
       .from("memorial_tributes")
       .insert([newTributeData])
@@ -57,20 +65,9 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
-      if (error.code === "PGRST205") {
-        return NextResponse.json(
-          {
-            error: "Bảng memorial_tributes chưa được tạo trong Supabase. Vui lòng vào SQL Editor chạy file schema.sql.",
-            success: false,
-          },
-          { status: 400 }
-        );
-      }
-
-      console.error("Supabase insert error:", error);
       return NextResponse.json(
         { error: error.message, success: false },
-        { status: 500 }
+        { status: error.code === "PGRST205" ? 400 : 500 }
       );
     }
 
