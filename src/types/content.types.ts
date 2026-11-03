@@ -58,6 +58,7 @@ export interface MediaItem {
   category: "all" | "image" | "relic" | "video" | "document";
   thumbnail: string;
   url: string;
+  youtubeId?: string;
   year: string;
   description: string;
   source: string;

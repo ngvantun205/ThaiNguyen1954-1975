@@ -139,47 +139,68 @@ export default function MediaGallery() {
                   {selectedMedia.title}
                 </h3>
 
-                {/* Media Showcase Box */}
-                <div className="h-64 sm:h-80 rounded-2xl bg-gradient-to-br from-[#1E212D] to-[#2D3142] border border-[#DAA520]/40 flex flex-col items-center justify-center p-6 text-center text-[#FDFBF7] relative overflow-hidden">
-                  <img
-                    src={selectedMedia.url}
-                    alt={selectedMedia.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-                  <div className="relative z-10 p-4 flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-full bg-[#8B0000]/90 border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] mb-3 shadow-lg">
-                      {selectedMedia.category === "video" ? (
-                        <Play className="w-8 h-8 fill-[#DAA520]" />
-                      ) : (
-                        <ImageIcon className="w-8 h-8" />
-                      )}
-                    </div>
-                    <p className="text-sm font-semibold text-[#DAA520] drop-shadow-sm">
-                      Tư liệu Số hoá Lịch sử Kháng chiến Thái Nguyên
-                    </p>
-                    <p className="text-xs text-[#D1D5DB] mt-1 max-w-md drop-shadow-xs">
-                      {selectedMedia.source}
-                    </p>
+                {/* Media Showcase Box: Video Iframe hoặc Ảnh phóng to */}
+                {selectedMedia.youtubeId ? (
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-[#DAA520] shadow-xl bg-black">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${selectedMedia.youtubeId}?autoplay=1&rel=0`}
+                      title={selectedMedia.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="h-64 sm:h-80 rounded-2xl bg-gradient-to-br from-[#1E212D] to-[#2D3142] border border-[#DAA520]/40 flex flex-col items-center justify-center p-6 text-center text-[#FDFBF7] relative overflow-hidden">
+                    <img
+                      src={selectedMedia.url}
+                      alt={selectedMedia.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+                    <div className="relative z-10 p-4 flex flex-col items-center">
+                      <div className="w-16 h-16 rounded-full bg-[#8B0000]/90 border-2 border-[#DAA520] flex items-center justify-center text-[#DAA520] mb-3 shadow-lg">
+                        <ImageIcon className="w-8 h-8" />
+                      </div>
+                      <p className="text-sm font-semibold text-[#DAA520] drop-shadow-sm">
+                        Tư liệu Số hoá Lịch sử Kháng chiến Thái Nguyên
+                      </p>
+                      <p className="text-xs text-[#D1D5DB] mt-1 max-w-md drop-shadow-xs">
+                        {selectedMedia.source}
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Comprehensive Description */}
                 <p className="text-sm sm:text-base text-[#4A3B32] leading-relaxed">
                   {selectedMedia.description}
                 </p>
 
-                <div className="pt-4 border-t border-[#E8E1D3] flex items-center justify-between text-xs text-[#8C786A]">
+                <div className="pt-4 border-t border-[#E8E1D3] flex flex-wrap items-center justify-between gap-3 text-xs text-[#8C786A]">
                   <span>Nguồn: <strong>{selectedMedia.source}</strong></span>
-                  <button
-                    onClick={() => setSelectedMedia(null)}
-                    className="px-4 py-2 rounded-xl bg-[#8B0000] text-[#FDFBF7] font-semibold text-xs hover:bg-[#660000]"
-                  >
-                    Đóng cửa sổ
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {selectedMedia.youtubeId && (
+                      <a
+                        href={selectedMedia.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-2 rounded-xl bg-[#DAA520] text-[#1E212D] font-bold text-xs hover:bg-[#F4D06F] transition-all flex items-center gap-1.5"
+                      >
+                        <span>Mở trên YouTube</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <button
+                      onClick={() => setSelectedMedia(null)}
+                      className="px-4 py-2 rounded-xl bg-[#8B0000] text-[#FDFBF7] font-semibold text-xs hover:bg-[#660000] transition-colors"
+                    >
+                      Đóng cửa sổ
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>

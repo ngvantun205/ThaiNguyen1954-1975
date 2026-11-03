@@ -138,7 +138,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "Từ trận đầu cầu Gia Bẩy, máy bay thứ 1.000 đến kỳ tích hạ gục 2 pháo đài bay B-52",
     timeframe: "1965 – 1972",
     badge: "Chiến Công Hiển Hách",
-    heroImage: "/images/topics/03-nhung-tran-danh-lich-su.jpg",
+    heroImage: "/images/topics/03-nhung-tran-danh-lich-su.gif",
     summary:
       "Lực lượng phòng không ba thứ quân Thái Nguyên đã kiên cường đánh trả hàng ngàn lượt oanh kích tàn khốc của không quân Mỹ, bắn rơi 61 máy bay hiện đại, trong đó có chiến công bắn rơi máy bay thứ 1.000 trên miền Bắc và hạ gục 2 'pháo đài bay' B-52 huyền thoại.",
     keyStats: [
@@ -423,10 +423,11 @@ export const MEDIA_GALLERY: MediaItem[] = [
     id: "media-6",
     title: "Phim tài liệu: Bản hùng ca Đại đội 915 bất tử",
     category: "video",
-    thumbnail: "/images/relics/phim-915.jpg",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    thumbnail: "https://img.youtube.com/vi/XVh1vdnfSQI/hqdefault.jpg",
+    url: "https://www.youtube.com/watch?v=XVh1vdnfSQI",
+    youtubeId: "XVh1vdnfSQI",
     year: "1972 - 2022",
-    description: "Thước phim tư liệu quý giá ghi lại lời kể của các nhân chứng lịch sử và thân nhân 60 liệt sĩ TNXP Đại đội 915.",
+    description: "Thước phim tư liệu quý giá ghi lại lời kể của các nhân chứng lịch sử và sự hy sinh anh dũng của 60 cán bộ, đội viên Đại đội 915 TNXP đêm 24/12/1972.",
     source: "Đài Phát thanh - Truyền hình Thái Nguyên (TNTV)",
   },
 ];

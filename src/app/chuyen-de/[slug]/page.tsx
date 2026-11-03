@@ -182,6 +182,35 @@ export default async function TopicDetailPage({
           </section>
         ))}
 
+        {/* Special Section for Topic 4: Phim Tài Liệu & Danh sách Liệt sĩ Đại đội 915 */}
+        {topic.slug === "khuc-hung-ca-dai-doi-915" && (
+          <section className="rounded-3xl bg-[#F7F3EA] border-2 border-[#DAA520] p-6 sm:p-10 space-y-5 shadow-lg">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="px-3.5 py-1 rounded-full bg-[#8B0000] text-[#FDFBF7] text-xs font-bold uppercase tracking-wider shadow-xs">
+                Phim Tư Liệu Lịch Sử
+              </span>
+              <span className="text-xs text-[#8C786A] font-semibold">Nguồn: Đài PT-TH Thái Nguyên (TNTV)</span>
+            </div>
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#8B0000]">
+                Thước Phim Tư Liệu: Khúc Hùng Ca Đại Đội 915 Bất Tử
+              </h2>
+              <p className="text-sm text-[#4A3B32] mt-1">
+                Ghi lại những lời kể của các nhân chứng lịch sử và sự hy sinh kiên cường của 60 cán bộ, đội viên Đại đội 915 TNXP đêm 24/12/1972 tại Ga Lưu Xá.
+              </p>
+            </div>
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-[#8B0000]/40 shadow-xl bg-black">
+              <iframe
+                src="https://www.youtube.com/embed/XVh1vdnfSQI?rel=0"
+                title="Phim tài liệu Đại đội 915 bất tử"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        )}
+
         {/* Special Section for Topic 4: Danh sách Liệt sĩ Đại đội 915 */}
         {topic.slug === "khuc-hung-ca-dai-doi-915" && (
           <section id="danh-sach-liet-si" className="rounded-3xl bg-gradient-to-b from-[#1E212D] via-[#2D3142] to-[#1E212D] text-[#FDFBF7] p-8 sm:p-12 border-2 border-[#DAA520] shadow-2xl space-y-8">
