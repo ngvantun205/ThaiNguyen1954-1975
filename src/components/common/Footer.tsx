@@ -79,8 +79,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/chuyen-de/khuc-hung-ca-dai-doi-915#danh-sach-liet-si" className="hover:text-[#DAA520] transition-colors">
-                  Danh sách 60 liệt sĩ TNXP Đại đội 915
+                <Link href="/dai-doi-915" className="hover:text-[#DAA520] transition-colors flex items-center gap-1.5 font-semibold text-[#DAA520]">
+                  <Shield className="w-4 h-4 text-[#DAA520]" />
+                  Đại đội 915 & 60 Anh hùng Liệt sĩ
                 </Link>
               </li>
             </ul>

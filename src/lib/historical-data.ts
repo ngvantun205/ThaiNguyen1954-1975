@@ -138,7 +138,7 @@ export const HISTORICAL_TOPICS: Topic[] = [
     subtitle: "Từ trận đầu cầu Gia Bẩy, máy bay thứ 1.000 đến kỳ tích hạ gục 2 pháo đài bay B-52",
     timeframe: "1965 – 1972",
     badge: "Chiến Công Hiển Hách",
-    heroImage: "/images/topics/03-nhung-tran-danh-lich-su.gif",
+    heroImage: "/images/topics/03-nhung-tran-danh-lich-su.jpg",
     summary:
       "Lực lượng phòng không ba thứ quân Thái Nguyên đã kiên cường đánh trả hàng ngàn lượt oanh kích tàn khốc của không quân Mỹ, bắn rơi 61 máy bay hiện đại, trong đó có chiến công bắn rơi máy bay thứ 1.000 trên miền Bắc và hạ gục 2 'pháo đài bay' B-52 huyền thoại.",
     keyStats: [
