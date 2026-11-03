@@ -2,58 +2,50 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, Sparkles, CheckCircle2, Heart } from "lucide-react";
+import { Flame, Sparkles, CheckCircle2 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import { supabase } from "@/lib/supabase/client";
 
-interface CandleWidgetProps {
-  initialCount?: number;
-}
-
-export default function CandleLightWidget({ initialCount = 1972 }: CandleWidgetProps) {
-  const [candleCount, setCandleCount] = useState<number>(initialCount);
+export default function CandleLightWidget() {
+  const [candleCount, setCandleCount] = useState<number | null>(null);
   const [hasLit, setHasLit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [justLit, setJustLit] = useState<boolean>(false);
 
-  // Fetch initial count & subscribe to Supabase Realtime if available
   useEffect(() => {
-    // Check localStorage
+    // 1. Kiểm tra localStorage trạng thái đã thắp nến của thiết bị
     const saved = localStorage.getItem("has_lit_candle_thai_nguyen");
     if (saved) {
       setHasLit(true);
     }
 
-    // Fetch count from API
+    // 2. Tải số lượng nến từ Supabase qua API
     fetch("/api/candles")
       .then((res) => res.json())
       .then((data) => {
-        if (data?.count) {
+        if (typeof data?.count === "number") {
           setCandleCount(data.count);
         }
       })
       .catch((err) => console.error("Failed to load candle count:", err));
 
-    // Realtime channel if Supabase is active
-    const client = supabase;
-    if (isSupabaseConfigured && client) {
-      const channel = client
-        .channel("candle-realtime")
-        .on(
-          "postgres_changes",
-          { event: "UPDATE", schema: "public", table: "candle_stats" },
-          (payload: any) => {
-            if (payload.new?.total_candles) {
-              setCandleCount(Number(payload.new.total_candles));
-            }
+    // 3. Đăng ký nhận sự kiện Realtime trực tiếp từ Supabase
+    const channel = supabase
+      .channel("candle-realtime-channel")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "candle_stats" },
+        (payload: any) => {
+          if (payload.new?.total_candles !== undefined) {
+            setCandleCount(Number(payload.new.total_candles));
           }
-        )
-        .subscribe();
+        }
+      )
+      .subscribe();
 
-      return () => {
-        client.removeChannel(channel);
-      };
-    }
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const handleLightCandle = async () => {
@@ -64,17 +56,15 @@ export default function CandleLightWidget({ initialCount = 1972 }: CandleWidgetP
       const res = await fetch("/api/candles", { method: "POST" });
       const data = await res.json();
 
-      if (data?.count) {
+      if (data?.success && typeof data?.count === "number") {
         setCandleCount(data.count);
-      } else {
-        setCandleCount((prev) => prev + 1);
       }
 
       setHasLit(true);
       setJustLit(true);
       localStorage.setItem("has_lit_candle_thai_nguyen", "true");
 
-      // Solemn warm gold spark effect
+      // Hiệu ứng hạt ánh sáng trang nghiêm
       confetti({
         particleCount: 45,
         spread: 60,
@@ -89,8 +79,6 @@ export default function CandleLightWidget({ initialCount = 1972 }: CandleWidgetP
       }, 5000);
     } catch (error) {
       console.error("Error lighting candle:", error);
-      setCandleCount((prev) => prev + 1);
-      setHasLit(true);
     } finally {
       setIsLoading(false);
     }
@@ -126,7 +114,6 @@ export default function CandleLightWidget({ initialCount = 1972 }: CandleWidgetP
 
             {/* Flickering Flame */}
             <div className="w-8 h-14 bg-gradient-to-t from-[#8B0000] via-[#DAA520] to-[#FFFFFF] rounded-[50%_50%_35%_35%/70%_70%_30%_30%] animate-flame shadow-lg relative z-10">
-              {/* Inner core flame */}
               <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3.5 h-7 bg-white rounded-full opacity-90 blur-[1px]" />
             </div>
 
@@ -145,15 +132,15 @@ export default function CandleLightWidget({ initialCount = 1972 }: CandleWidgetP
           <div className="w-28 h-4 bg-gradient-to-r from-[#DAA520] via-[#F4D06F] to-[#B8860B] rounded-full shadow-lg -mt-1 border border-[#DAA520]" />
         </div>
 
-        {/* Realtime Candle Counter */}
+        {/* Realtime Candle Counter từ Supabase */}
         <div className="mt-4 space-y-1">
           <motion.div
-            key={candleCount}
+            key={candleCount ?? 0}
             initial={{ scale: 1.15, opacity: 0.8 }}
             animate={{ scale: 1, opacity: 1 }}
             className="font-serif text-4xl sm:text-5xl font-black text-[#DAA520] tracking-tight drop-shadow-md"
           >
-            {candleCount.toLocaleString("vi-VN")}
+            {candleCount === null ? "..." : candleCount.toLocaleString("vi-VN")}
           </motion.div>
           <div className="text-xs uppercase tracking-widest text-[#E8E1D3] font-medium">
             Lượt nến tri ân đã được thắp sáng

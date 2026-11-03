@@ -5,54 +5,55 @@ import CandleLightWidget from "@/components/memorial/CandleLightWidget";
 import GuestbookForm from "@/components/memorial/GuestbookForm";
 import TributeWall from "@/components/memorial/TributeWall";
 import { Tribute } from "@/types/content.types";
-import { Flame, Sparkles, Heart, Shield } from "lucide-react";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import { Flame } from "lucide-react";
+import { supabase } from "@/lib/supabase/client";
 
 export default function MemorialClient() {
   const [tributes, setTributes] = useState<Tribute[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Fetch tributes from API
+    // 1. Tải toàn bộ lời tri ân thực tế từ Supabase
     fetch("/api/tributes")
       .then((res) => res.json())
       .then((data) => {
-        if (data?.tributes) {
+        if (Array.isArray(data?.tributes)) {
           setTributes(data.tributes);
         }
       })
       .catch((err) => console.error("Error loading tributes:", err))
       .finally(() => setIsLoading(false));
 
-    // 2. Realtime listener if Supabase is active
-    const client = supabase;
-    if (isSupabaseConfigured && client) {
-      const channel = client
-        .channel("tributes-realtime")
-        .on(
-          "postgres_changes",
-          { event: "INSERT", schema: "public", table: "memorial_tributes" },
-          (payload: any) => {
-            if (payload.new) {
-              setTributes((prev) => [payload.new as Tribute, ...prev]);
-            }
+    // 2. Kênh Realtime lắng nghe lời tri ân mới thêm vào database Supabase
+    const channel = supabase
+      .channel("tributes-realtime-channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "memorial_tributes" },
+        (payload: any) => {
+          if (payload.new) {
+            setTributes((prev) => [payload.new as Tribute, ...prev]);
           }
-        )
-        .subscribe();
+        }
+      )
+      .subscribe();
 
-      return () => {
-        client.removeChannel(channel);
-      };
-    }
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const handleTributeAdded = (newTribute: Tribute) => {
-    setTributes((prev) => [newTribute, ...prev]);
+    setTributes((prev) => {
+      // Tránh trùng lặp nếu Realtime đã chèn trước
+      if (prev.some((t) => t.id === newTribute.id)) return prev;
+      return [newTribute, ...prev];
+    });
   };
 
   return (
     <div className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      {/* Page Title & Sacred Header */}
+      {/* Tiêu đề & Không gian thiêng liêng */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8B0000] text-[#DAA520] text-xs font-bold uppercase tracking-widest border border-[#DAA520] shadow-sm">
           <Flame className="w-3.5 h-3.5 fill-[#DAA520]" />
@@ -67,19 +68,25 @@ export default function MemorialClient() {
         </p>
       </div>
 
-      {/* 1. Realtime Candle Light Ceremony Widget */}
+      {/* 1. Nghi thức Thắp nến tri ân kết nối trực tiếp Supabase Realtime */}
       <section className="max-w-4xl mx-auto">
         <CandleLightWidget />
       </section>
 
-      {/* 2. Interactive Guestbook Form */}
+      {/* 2. Biểu mẫu gửi lời tri ân trực tuyến vào Supabase */}
       <section className="max-w-4xl mx-auto">
         <GuestbookForm onTributeAdded={handleTributeAdded} />
       </section>
 
-      {/* 3. Tributes Wall */}
+      {/* 3. Tường lưu bút với dữ liệu thực từ Supabase */}
       <section className="pt-6">
-        <TributeWall tributes={tributes} />
+        {isLoading ? (
+          <div className="text-center py-10 text-sm text-[#8C786A] italic">
+            Đang tải dữ liệu lưu bút từ hệ thống Supabase...
+          </div>
+        ) : (
+          <TributeWall tributes={tributes} />
+        )}
       </section>
     </div>
   );
