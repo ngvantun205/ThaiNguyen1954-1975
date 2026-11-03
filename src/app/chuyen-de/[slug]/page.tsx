@@ -258,7 +258,14 @@ export default async function TopicDetailPage({
               <p className="text-xs text-[#9CA3AF] italic">
                 (Trên đây là danh sách đại diện tiêu biểu trong số 60 liệt sĩ TNXP Đại đội 915 được lưu danh tại Khu di tích Quốc gia Gia Sàng)
               </p>
-              <div className="pt-6">
+              <div className="pt-6 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/dai-doi-915"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#8B0000] text-[#FDFBF7] border border-[#DAA520] font-bold text-sm shadow-lg hover:bg-[#660000] transition-all"
+                >
+                  <ShieldCheck className="w-4 h-4 text-[#DAA520]" />
+                  <span>Xem hồ sơ đầy đủ 60 Liệt sĩ tại trang Đại đội 915</span>
+                </Link>
                 <Link
                   href="/tuong-niem"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#DAA520] to-[#B8860B] text-[#1E212D] font-bold text-sm shadow-lg hover:scale-105 transition-all"
