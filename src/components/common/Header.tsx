@@ -21,7 +21,7 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Trang chủ", icon: Compass },
     { href: "/chuyen-de", label: "4 Chuyên đề", icon: BookOpen },
-    { href: "/#timeline", label: "Niên biểu", icon: Calendar },
+    { href: "/dong-thoi-gian", label: "Niên biểu", icon: Calendar },
     { href: "/#ban-do", label: "Bản đồ lịch sử", icon: MapPin },
     { href: "/dai-doi-915", label: "Đại đội 915", icon: Shield },
     { href: "/tu-lieu", label: "Kho tư liệu", icon: ImageIcon },

@@ -1,242 +1,155 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HISTORICAL_EVENTS } from "@/lib/historical-data";
-import { HistoricalEvent } from "@/types/content.types";
-import { Calendar, MapPin, Award, Clock, ArrowRight, BookOpen, Shield, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { Clock, ArrowRight, Sparkles, Compass, Shield, Calendar, Image as ImageIcon, MapPin } from "lucide-react";
+import SafeImage from "@/components/common/SafeImage";
 
-const ERAS = [
-  { id: "all", label: "Toàn bộ giai đoạn 1954–1975" },
-  { id: "1954-1964", label: "1954–1964: Khôi phục & Khu Gang thép" },
-  { id: "1965-1968", label: "1965–1968: Hợp nhất & Chống phá hoại" },
-  { id: "1969-1972", label: "1969–1972: Ga Lưu Xá & Trận địa B-52" },
-  { id: "1973-1975", label: "1973–1975: Chi viện & Đại thắng 1975" },
+const HIGHLIGHT_MILESTONES = [
+  {
+    year: "1954",
+    title: "Bác Hồ thăm đập Thác Huống",
+    category: "Khôi phục kinh tế",
+    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+  },
+  {
+    year: "1959",
+    title: "Khởi công Khu Gang thép",
+    category: "Cái nôi luyện kim",
+    image: "/images/topics/01-vi-the-chien-luoc.jpg",
+  },
+  {
+    year: "1965",
+    title: "Trận đầu cầu Gia Bẩy",
+    category: "Khói lửa chống chiến tranh phá hoại",
+    image: "/images/relics/cau-gia-bay.jpg",
+  },
+  {
+    year: "1966",
+    title: "Bắn rơi máy bay thứ 1.000",
+    category: "Chiến công hiển hách",
+    image: "/images/relics/phao-cao-xa.jpg",
+  },
+  {
+    year: "1972",
+    title: "Khúc tráng ca Lưu Xá & 915",
+    category: "Địa chỉ đỏ bất tử",
+    image: "/images/topics/04-dai-doi-915.jpg",
+  },
+  {
+    year: "1975",
+    title: "Đại thắng Mùa Xuân 1975",
+    category: "Non sông liền một dải",
+    image: "/images/relics/dai-doi-915.jpg",
+  },
 ];
 
 export default function TimelineSection() {
-  const [selectedEra, setSelectedEra] = useState<string>("all");
-  const [activeEventIndex, setActiveEventIndex] = useState<number>(0);
-
-  const filteredEvents = selectedEra === "all"
-    ? HISTORICAL_EVENTS
-    : HISTORICAL_EVENTS.filter((e) => e.era === selectedEra);
-
-  // Ensure active event is within bounds of current filter
-  const currentEvent = filteredEvents[Math.min(activeEventIndex, filteredEvents.length - 1)] || filteredEvents[0];
-
-  const handleNext = () => {
-    setActiveEventIndex((prev) => (prev + 1) % filteredEvents.length);
-  };
-
-  const handlePrev = () => {
-    setActiveEventIndex((prev) => (prev - 1 + filteredEvents.length) % filteredEvents.length);
-  };
-
   return (
-    <section id="timeline" className="py-20 sm:py-24 bg-[#F3EBDD] border-t border-b border-[#D5C7AD]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8D2926]/10 border border-[#8D2926]/30 text-xs font-bold uppercase tracking-widest text-[#8D2926]">
-            <Clock className="w-3.5 h-3.5 text-[#8D2926]" />
-            <span>Biên Niên Sử Bảo Tàng</span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#242321] tracking-tight">
-            Niên Biểu Lịch Sử Thái Nguyên (1954 – 1975)
-          </h2>
-          <p className="text-base text-[#4A4742] leading-relaxed">
-            Hành trình 21 năm vẻ vang: từ những ngày đầu tiếp quản, khôi phục kinh tế, xây dựng biểu tượng Gang thép Thái Nguyên, kiên cường đánh bại chiến tranh phá hoại của giặc Mỹ cho đến ngày non sông thu về một mối.
-          </p>
-        </div>
+    <section id="timeline" className="py-16 sm:py-24 bg-[#1B1A18] text-[#FAF5ED] relative overflow-hidden border-t-2 border-b-2 border-[#A88A52]">
+      {/* Archival dark museum backdrop overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(#A88A52_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 pointer-events-none" />
 
-        {/* Era Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-          {ERAS.map((era) => {
-            const isSelected = selectedEra === era.id;
-            return (
-              <button
-                key={era.id}
-                onClick={() => {
-                  setSelectedEra(era.id);
-                  setActiveEventIndex(0);
-                }}
-                className={`px-3.5 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border ${
-                  isSelected
-                    ? "bg-[#8D2926] text-[#FAF5ED] border-[#8D2926] shadow-xs"
-                    : "bg-[#FAF5ED] text-[#4A4742] border-[#D5C7AD] hover:bg-[#FAF5ED]/80 hover:text-[#8D2926]"
-                }`}
-              >
-                {era.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Desktop Interactive Timeline Scrubbing Bar & Selected Milestone Card */}
-        <div className="hidden lg:block space-y-8">
-          {/* Horizontal Scrubber Strip */}
-          <div className="relative bg-[#FAF5ED] border border-[#D5C7AD] rounded-xl p-4 archival-shadow">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#4A4742]">
-                Mốc sự kiện: <strong>{activeEventIndex + 1}</strong> / {filteredEvents.length}
-              </span>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrev}
-                  className="p-1.5 rounded-md border border-[#D5C7AD] bg-[#F3EBDD] hover:bg-[#8D2926] hover:text-[#FAF5ED] text-[#242321] transition-colors"
-                  aria-label="Mốc trước"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-1.5 rounded-md border border-[#D5C7AD] bg-[#F3EBDD] hover:bg-[#8D2926] hover:text-[#FAF5ED] text-[#242321] transition-colors"
-                  aria-label="Mốc kế tiếp"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        {/* Top Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#A88A52]/30 pb-8">
+          <div className="space-y-3 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#8D2926] border border-[#A88A52]/60 text-xs font-mono font-bold uppercase tracking-widest text-[#FAF5ED]">
+              <Clock className="w-3.5 h-3.5 text-[#E5B84B]" />
+              <span>Phòng Trưng Bày Chuyên Sâu</span>
             </div>
-
-            {/* Horizontal timeline track */}
-            <div className="relative py-4">
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[#D5C7AD] -translate-y-1/2" />
-              <div className="relative flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-2">
-                {filteredEvents.map((event, idx) => {
-                  const isActive = idx === activeEventIndex;
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveEventIndex(idx)}
-                      className="group flex flex-col items-center focus:outline-hidden min-w-[70px] px-1 transition-transform"
-                    >
-                      {/* Node Circle */}
-                      <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 z-10 ${
-                          isActive
-                            ? "bg-[#8D2926] text-[#FAF5ED] border-2 border-[#A88A52] ring-3 ring-[#8D2926]/20 scale-125"
-                            : "bg-[#FAF5ED] border border-[#D5C7AD] text-[#4A4742] group-hover:border-[#8D2926] group-hover:scale-110"
-                        }`}
-                      >
-                        <span className="font-mono text-[10px] font-bold">{idx + 1}</span>
-                      </div>
-                      {/* Year Label */}
-                      <span
-                        className={`mt-2 font-mono text-xs transition-colors ${
-                          isActive ? "font-bold text-[#8D2926]" : "text-[#4A4742] group-hover:text-[#242321]"
-                        }`}
-                      >
-                        {event.year}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-[#FAF5ED] tracking-tight leading-tight">
+              Triển Lãm Tương Tác Dòng Thời Gian <span className="text-[#E5B84B] font-serif">(1954 – 1975)</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#D5C7AD] leading-relaxed font-light">
+              Trải nghiệm bảo tàng số hiện đại: khi chọn từng mốc son, toàn bộ bối cảnh không gian sẽ đổi thay cùng hình ảnh tư liệu gốc, âm vang thời đại và tọa độ lịch sử.
+            </p>
           </div>
 
-          {/* Active Event Archival Inspector Showcase */}
-          <AnimatePresence mode="wait">
-            {currentEvent && (
-              <motion.div
-                key={currentEvent.title + currentEvent.date}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl bg-[#FAF5ED] border-2 border-[#D5C7AD] p-8 sm:p-10 archival-shadow grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
-              >
-                <div className="md:col-span-8 space-y-4">
-                  {/* Tags */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="px-3 py-1 rounded-md bg-[#8D2926] text-[#FAF5ED] text-xs font-bold font-mono tracking-wider shadow-xs">
-                      {currentEvent.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4A4742] bg-[#F3EBDD] px-2.5 py-1 rounded border border-[#D5C7AD]">
-                      <MapPin className="w-3.5 h-3.5 text-[#8D2926]" />
-                      <span>{currentEvent.location}</span>
-                    </span>
-                    {currentEvent.featured && (
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#A88A52] px-2 py-0.5 rounded bg-[#A88A52]/10 border border-[#A88A52]/30">
-                        Mốc son trọng đại
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#8D2926] leading-snug">
-                    {currentEvent.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-base text-[#242321] leading-relaxed">
-                    {currentEvent.description}
-                  </p>
-
-                  {/* Action Link */}
-                  <div className="pt-2 flex items-center gap-4">
-                    <Link
-                      href="/chuyen-de"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#8D2926] hover:text-[#6E1F1D] group"
-                    >
-                      <BookOpen className="w-4 h-4 text-[#A88A52]" />
-                      <span>Đọc tài liệu lịch sử liên quan</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Archival Seal Card Graphic */}
-                <div className="md:col-span-4 flex flex-col items-center justify-center p-6 rounded-xl bg-[#F3EBDD] border border-[#D5C7AD] text-center space-y-3">
-                  <div className="w-16 h-16 rounded-full bg-[#8D2926] border-2 border-[#A88A52] flex items-center justify-center text-[#FAF5ED] shadow-sm">
-                    <Shield className="w-8 h-8 text-[#A88A52]" />
-                  </div>
-                  <div>
-                    <div className="font-mono text-2xl font-bold text-[#8D2926] tracking-tight">
-                      NĂM {currentEvent.year}
-                    </div>
-                    <div className="text-xs text-[#4A4742] uppercase tracking-wider mt-0.5">
-                      Tư liệu Lịch sử Bắc Thái
-                    </div>
-                  </div>
-                  <div className="text-[11px] text-[#4A4742]/80 italic border-t border-[#D5C7AD] pt-2 w-full">
-                    Ghi chép theo Văn kiện Lịch sử Đảng bộ tỉnh Thái Nguyên (1954–1975)
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="shrink-0">
+            <Link
+              href="/dong-thoi-gian"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg bg-[#8D2926] hover:bg-[#6E1F1D] text-[#FAF5ED] font-bold text-sm tracking-wide border border-[#E5B84B] shadow-lg hover:shadow-xl transition-all duration-300 group"
+            >
+              <span>Mở Triển Lãm Toàn Màn Hình</span>
+              <ArrowRight className="w-4 h-4 text-[#E5B84B] group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
 
-        {/* Mobile & Tablet Vertical Timeline Flow */}
-        <div className="lg:hidden space-y-6">
-          <div className="space-y-4">
-            {filteredEvents.map((event, index) => (
-              <div
-                key={index}
-                className="rounded-xl bg-[#FAF5ED] border border-[#D5C7AD] p-5 space-y-3 archival-shadow"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="px-2.5 py-1 rounded bg-[#8D2926] text-[#FAF5ED] text-xs font-bold font-mono">
-                    {event.date}
-                  </span>
-                  <span className="flex items-center gap-1 text-xs text-[#4A4742]">
-                    <MapPin className="w-3.5 h-3.5 text-[#8D2926]" />
-                    <span>{event.location}</span>
-                  </span>
-                </div>
+        {/* Milestone Previews Horizontal Ribbon */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+          {HIGHLIGHT_MILESTONES.map((item, idx) => (
+            <Link
+              key={idx}
+              href="/dong-thoi-gian"
+              className="group relative rounded-xl border border-[#A88A52]/40 bg-[#141311]/80 hover:border-[#E5B84B] p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl overflow-hidden"
+            >
+              {/* Top Image Vignette */}
+              <div className="relative w-full h-28 rounded-lg overflow-hidden mb-3 border border-white/10">
+                <SafeImage
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 font-sans font-black text-xl text-[#E5B84B]">
+                  {item.year}
+                </span>
+              </div>
 
-                <h3 className="font-serif text-lg font-bold text-[#8D2926] leading-snug">
-                  {event.title}
+              {/* Title & Category */}
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#D5C7AD]/80 block">
+                  {item.category}
+                </span>
+                <h3 className="font-serif text-sm font-bold text-[#FAF5ED] group-hover:text-[#E5B84B] transition-colors leading-snug line-clamp-2">
+                  {item.title}
                 </h3>
-
-                <p className="text-sm text-[#242321] leading-relaxed">
-                  {event.description}
-                </p>
               </div>
-            ))}
+
+              <div className="pt-3 mt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#A88A52] font-mono group-hover:text-[#FAF5ED]">
+                <span>Khám phá</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Museum Feature Pills */}
+        <div className="p-6 rounded-xl bg-black/40 border border-[#A88A52]/30 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#8D2926] border border-[#E5B84B]/60 flex items-center justify-center shrink-0">
+              <ImageIcon className="w-4 h-4 text-[#E5B84B]" />
+            </div>
+            <div>
+              <h4 className="font-serif text-sm font-bold text-[#FAF5ED]">Bối cảnh động đổi theo mốc</h4>
+              <p className="text-xs text-[#D5C7AD] mt-1 leading-relaxed">
+                Tự động crossfade ảnh tư liệu tư liệu gốc phủ tràn toàn màn hình khi nhấp chọn sự kiện.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#8D2926] border border-[#E5B84B]/60 flex items-center justify-center shrink-0">
+              <Clock className="w-4 h-4 text-[#E5B84B]" />
+            </div>
+            <div>
+              <h4 className="font-serif text-sm font-bold text-[#FAF5ED]">Trải nghiệm không cuộn trang</h4>
+              <p className="text-xs text-[#D5C7AD] mt-1 leading-relaxed">
+                Thiết kế trọn vẹn trong một khung nhìn bảo tàng chuẩn quốc tế, thao tác phím bấm và thanh trượt trực quan.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#8D2926] border border-[#E5B84B]/60 flex items-center justify-center shrink-0">
+              <Compass className="w-4 h-4 text-[#E5B84B]" />
+            </div>
+            <div>
+              <h4 className="font-serif text-sm font-bold text-[#FAF5ED]">Kết nối đa chiều tư liệu</h4>
+              <p className="text-xs text-[#D5C7AD] mt-1 leading-relaxed">
+                Liên kết trực tiếp tới 4 chuyên đề nghiên cứu sâu, bản đồ tọa độ chiến trường và kho kỷ vật.
+              </p>
+            </div>
           </div>
         </div>
       </div>

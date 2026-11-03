@@ -67,15 +67,25 @@ export interface MediaItem {
 }
 
 export interface HistoricalEvent {
+  id?: string;
   year: string;
   date: string;
   title: string;
   location: string;
   description: string;
+  detailedText?: string;
   category: "military" | "economic" | "memorial" | "diplomatic";
   featured?: boolean;
   image?: string;
+  imageCaption?: string;
+  imageSource?: string;
+  quote?: {
+    text: string;
+    author: string;
+  };
   era?: "1954-1964" | "1965-1968" | "1969-1972" | "1973-1975";
+  relatedSlug?: string;
+  mapLocationId?: string;
 }
 
 export interface HistoricalLocation {

@@ -64,9 +64,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-[#D5C7AD]">
               <li>
-                <a href="/#timeline" className="hover:text-[#FAF5ED] transition-colors">
+                <Link href="/dong-thoi-gian" className="hover:text-[#FAF5ED] transition-colors">
                   Niên biểu lịch sử (1954 – 1975)
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/#ban-do" className="hover:text-[#FAF5ED] transition-colors flex items-center gap-1.5">
