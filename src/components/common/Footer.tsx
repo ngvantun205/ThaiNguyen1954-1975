@@ -85,41 +85,47 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/tuong-niem" className="hover:text-[#FAF5ED] transition-colors flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 text-[#A88A52]" />
-                  Nghi thức Thắp nến & Sổ lưu bút tri ân
+                  <Link href="/tuong-niem" className="hover:text-[#FAF5ED] transition-colors flex items-center gap-1.5">
+                    <Flame className="w-3.5 h-3.5 text-[#A88A52]" />
+                <span>Nghi thức thắp nến tri ân</span>
+              </Link>
+            </li>
+            <li>
+                <Link href="/quyen-gop-915" className="hover:text-[#FAF5ED] transition-colors flex items-center gap-1.5">
+                  <Shield className="w-3.5 h-3.5 text-[#A88A52]" />
+                  <span>Quyên góp 915 &amp; Sao kê minh bạch</span>
                 </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Cột 4: Nguồn tư liệu & Địa chỉ đỏ */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-[#A88A52] uppercase tracking-wider">
-              Địa Chỉ Đỏ & Nguồn Sử Liệu
-            </h4>
-            <p className="text-xs text-[#D5C7AD] leading-relaxed">
-              <strong>Khu di tích lịch sử Quốc gia Đại đội 915</strong><br />
-              Phường Gia Sàng, TP. Thái Nguyên, tỉnh Thái Nguyên.
-            </p>
-            <p className="text-xs text-[#D5C7AD] leading-relaxed">
-              <strong>Khu di tích Cầu Gia Bẩy & Đồi Két Nước</strong><br />
-              Phường Đồng Bẩm & Hoàng Văn Thụ, TP. Thái Nguyên.
-            </p>
-            <div className="pt-2 text-[11px] text-[#D5C7AD]/70 leading-normal border-t border-[#D5C7AD]/20 font-mono">
-              Nguồn trích dẫn: Lịch sử Đảng bộ tỉnh Thái Nguyên (1954–1975), Lịch sử Quân khu 1, Ban Tuyên giáo Tỉnh ủy và Ban Chỉ huy TNXP 91 Bắc Thái.
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
-        {/* Bottom copyright & attribution */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#D5C7AD]/70 gap-4 font-mono">
-          <p>© 1954 – 1975 • BẢO TÀNG TƯ LIỆU LỊCH SỬ SỐ THÁI NGUYÊN.</p>
-          <p className="flex items-center gap-1.5 font-sans">
-            Hiện đại trong trải nghiệm – Trường tồn trong bản sắc
+        {/* Cột 4: Nguồn tư liệu & Địa chỉ đỏ */}
+        <div className="space-y-3">
+          <h4 className="font-serif text-sm font-bold text-[#A88A52] uppercase tracking-wider">
+            Địa Chỉ Đỏ & Nguồn Sử Liệu
+          </h4>
+          <p className="text-xs text-[#D5C7AD] leading-relaxed">
+            <strong>Khu di tích lịch sử Quốc gia Đại đội 915</strong><br />
+            Phường Gia Sàng, TP. Thái Nguyên, tỉnh Thái Nguyên.
           </p>
+          <p className="text-xs text-[#D5C7AD] leading-relaxed">
+            <strong>Khu di tích Cầu Gia Bẩy & Đồi Két Nước</strong><br />
+            Phường Đồng Bẩm & Hoàng Văn Thụ, TP. Thái Nguyên.
+          </p>
+          <div className="pt-2 text-[11px] text-[#D5C7AD]/70 leading-normal border-t border-[#D5C7AD]/20 font-mono">
+            Nguồn trích dẫn: Lịch sử Đảng bộ tỉnh Thái Nguyên (1954–1975), Lịch sử Quân khu 1, Ban Tuyên giáo Tỉnh ủy và Ban Chỉ huy TNXP 91 Bắc Thái.
+          </div>
         </div>
       </div>
-    </footer>
+
+      {/* Bottom copyright & attribution */}
+      <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#D5C7AD]/70 gap-4 font-mono">
+        <p>© 1954 – 1975 • BẢO TÀNG TƯ LIỆU LỊCH SỬ SỐ THÁI NGUYÊN.</p>
+        <p className="flex items-center gap-1.5 font-sans">
+          Hiện đại trong trải nghiệm – Trường tồn trong bản sắc
+        </p>
+      </div>
+    </div>
+    </footer >
   );
 }

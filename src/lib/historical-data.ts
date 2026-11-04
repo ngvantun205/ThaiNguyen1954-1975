@@ -305,7 +305,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Xã Đồng Bẩm, TP. Thái Nguyên",
     description: "Sau Hiệp định Giơ-ne-vơ, Chủ tịch Hồ Chí Minh trực tiếp đến thăm và động viên cán bộ, dân công khôi phục đại công trình thủy nông đầu mối đập Thác Huống phục vụ mùa màng miền Bắc.",
     detailedText: "Sau ngày hòa bình lập lại, công cuộc khôi phục kinh tế miền Bắc được khẩn trương tiến hành. Đập Thác Huống tại xã Đồng Bẩm (TP. Thái Nguyên) là công trình thủy lợi đầu mối lớn nhất vùng, cung cấp nước tưới cho hàng vạn hecta đồng ruộng Thái Nguyên và các tỉnh lân cận, bảo đảm an ninh lương thực cho hậu phương kháng chiến.",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/01-1954-thac-huong.jpg",
     imageCaption: "Cán bộ và nhân dân khôi phục công trình thủy nông đầu mối Thác Huống (1954)",
     imageSource: "Tư liệu Ban Tuyên giáo Tỉnh ủy Thái Nguyên",
     quote: {
@@ -326,7 +326,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Khu Gang thép, TP. Thái Nguyên",
     description: "Chính phủ quyết định khởi công 'Cái nôi' của ngành luyện kim Việt Nam – một biểu tượng công nghiệp nặng hàng đầu của miền Bắc xã hội chủ nghĩa.",
     detailedText: "Ngày 4/6/1959, công trình trọng điểm quốc gia Khu Gang thép Thái Nguyên chính thức khởi công. Hàng vạn cán bộ, chuyên gia và công nhân từ khắp mọi miền đã tề tựu về mảnh đất gió ngàn, đặt nền móng cho ngành luyện kim non trẻ của đất nước.",
-    image: "/images/topics/01-vi-the-chien-luoc.jpg",
+    image: "/images/timeline/02-1959-gang-thep.jpg",
     imageCaption: "Đại công trường xây dựng Khu Gang thép Thái Nguyên - 'Cái nôi' luyện kim đầu tiên của Việt Nam",
     imageSource: "Lịch sử Công ty Cổ phần Gang thép Thái Nguyên",
     quote: {
@@ -347,7 +347,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Khu Gang thép Thái Nguyên",
     description: "Chủ tịch Hồ Chí Minh căn dặn: 'Để làm ra thật nhiều gang thép cho Tổ quốc, các cô, các chú phải đoàn kết chặt chẽ, cải tiến quản lý và đẩy mạnh phong trào thi đua yêu nước'.",
     detailedText: "Đúng ngày đầu năm mới 1964, Bác Hồ đã về thăm và căn dặn cán bộ, công nhân Khu Gang thép. Lời dạy của Người đã trở thành kim chỉ nam, thắp sáng ngọn lửa lao động quên mình và ý chí kiên cường bám máy, bám lò đánh giặc của thợ thép Thái Nguyên.",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/03-1964-bac-ho-tham.jpg",
     imageCaption: "Bác Hồ nói chuyện với cán bộ, công nhân Khu Gang thép Thái Nguyên sáng mùng 1 Tết Dương lịch 1964",
     imageSource: "Khu Di tích Chủ tịch Hồ Chí Minh",
     quote: {
@@ -368,7 +368,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Khu tự trị Việt Bắc",
     description: "Nghị quyết Quốc hội hợp nhất thành tỉnh Bắc Thái; TP. Thái Nguyên là tỉnh lỵ và trung tâm công nghiệp – quân sự của Khu tự trị Việt Bắc.",
     detailedText: "Ngày 1/7/1965, Quốc hội quyết nghị hợp nhất tỉnh Thái Nguyên và Bắc Kạn thành tỉnh Bắc Thái. TP. Thái Nguyên vừa là tỉnh lỵ vừa là thủ phủ Khu tự trị Việt Bắc, trở thành trung tâm quân sự, kinh tế và tiếp nhận viện trợ chi viện lớn nhất vùng.",
-    image: "/images/topics/01-vi-the-chien-luoc.jpg",
+    image: "/images/timeline/04-1965-hop-nhat-bac-thai.jpg",
     imageCaption: "Thành phố Thái Nguyên - Tỉnh lỵ và thủ phủ Khu tự trị Việt Bắc thời kỳ hợp nhất Bắc Thái",
     imageSource: "Văn kiện Lịch sử Đảng bộ tỉnh Thái Nguyên",
     quote: {
@@ -389,7 +389,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Cầu Gia Bẩy, Đồi Két Nước",
     description: "Không quân Mỹ xuất kích 29 lần đánh phá; Đội tự vệ Hoàng Văn Thụ và Trung đoàn 210 kiên cường bám trận địa nổ súng đánh trả bảo vệ cây cầu cửa ngõ huyết mạch.",
     detailedText: "Không quân Mỹ huy động 29 lần chiếc oanh tạc hòng chặt đứt cây cầu cửa ngõ thành phố. 15 chiến sĩ tự vệ Hoàng Văn Thụ cùng bộ đội Trung đoàn 210 anh dũng bám mâm pháo hy sinh ghì chặt tay súng; cầu Gia Bẩy vẫn đứng vững kiên cường nối liền mạch máu giao thông thời chiến.",
-    image: "/images/relics/cau-gia-bay.jpg",
+    image: "/images/timeline/05-1965-cau-gia-bay.jpg",
     imageCaption: "Cầu Gia Bẩy kiên cường trong khói lửa bom đạn của không quân Mỹ năm 1965",
     imageSource: "Tư liệu Ban Tuyên giáo Tỉnh ủy Thái Nguyên",
     quote: {
@@ -410,7 +410,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Đồi Tiến Lập / Xã Tức Tranh (Phú Lương)",
     description: "Đại đội 101 Trung đoàn 210 bắn hạ tiêm kích F-105 rơi tại xã Tức Tranh, lập chiến công vẻ vang làm nức lòng quân dân cả nước.",
     detailedText: "Tại đồi Tiến Lập, Đại đội 101 (Trung đoàn Pháo cao xạ 210) bình tĩnh đón đánh chiếc F-105 của giặc Mỹ bổ nhào, bắn hạ bốc cháy rơi tại làng Chùa, xã Tức Tranh, huyện Phú Lương. Đây là chiếc máy bay thứ 1.000 của Mỹ bị bắn hạ trên miền Bắc.",
-    image: "/images/relics/phao-cao-xa.jpg",
+    image: "/images/timeline/06-1966-may-bay-1000.jpg",
     imageCaption: "Trận địa pháo cao xạ Trung đoàn 210 lập chiến công bắn rơi máy bay thứ 1.000 của Mỹ",
     imageSource: "Bảo tàng Lực lượng Vũ trang Quân khu 1",
     quote: {
@@ -431,7 +431,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Đồi 100, Xã Hà Thượng (Đại Từ)",
     description: "6 chiến sĩ dân quân chỉ dùng đúng 18 viên đạn súng máy và súng trường bắn rơi máy bay trinh sát siêu thanh RF-4C hiện đại của Mỹ.",
     detailedText: "Tại Đồi 100 xã Hà Thượng, huyện Đại Từ, 6 chiến sĩ dân quân chỉ với đúng 18 viên đạn súng máy và súng trường bộ binh đã bắn rơi máy bay trinh sát siêu âm RF-4C hiện đại của Mỹ, tạo nên kỳ tích của nghệ thuật chiến tranh nhân dân.",
-    image: "/images/topics/03-nhung-tran-danh-lich-su.jpg",
+    image: "/images/timeline/07-1966-dan-quan-ha-thuong.jpg",
     imageCaption: "Nữ dân quân và tự vệ Thái Nguyên bám đài quan sát, sẵn sàng nhả đạn tiêu diệt máy bay bay thấp",
     imageSource: "Tư liệu Quân khu 1",
     category: "military",
@@ -448,7 +448,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Toàn tỉnh Bắc Thái",
     description: "Xây dựng 146 trận địa pháo và mạng lưới công sự ngầm khổng lồ, bảo vệ toàn vẹn tính mạng nhân dân và dây chuyền sản xuất thép thời chiến.",
     detailedText: "Biến quê hương thành pháo đài thép, toàn tỉnh đào đắp hơn 210.400m giao thông hào, dựng 79.600 hầm trú ẩn và 146 trận địa pháo cao xạ, bảo toàn lực lượng và duy trì dòng điện, dòng thép chi viện cho tiền tuyến lớn.",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/08-1968-ham-hao-cong-su.jpg",
     imageCaption: "Mạng lưới công sự, hầm hào kiên cố bảo vệ tính mạng người dân và duy trì sản xuất thời chiến",
     imageSource: "Lịch sử Đảng bộ tỉnh Thái Nguyên",
     category: "economic",
@@ -464,7 +464,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Ga Lưu Xá, TP. Thái Nguyên",
     description: "Tiếp nhận và giải tỏa hàng chục vạn tấn vũ khí, lương thực từ các nước anh em theo đường sắt Kép – Lưu Xá chi viện cho chiến trường miền Nam.",
     detailedText: "Khi toàn bộ các cảng biển miền Bắc bị Mỹ thả thủy lôi phong tỏa, ga Lưu Xá trên tuyến đường sắt liên vận Kép - Lưu Xá trở thành đầu mối tiếp nhận hàng vạn tấn hàng viện trợ quốc tế lớn nhất miền Bắc, nằm trong tọa độ đánh phá hủy diệt của không quân Mỹ.",
-    image: "/images/relics/ga-luu-xa.jpg",
+    image: "/images/timeline/09-1972-cang-can-luu-xa.jpg",
     imageCaption: "Ga Lưu Xá - 'Cảng cạn' huyết mạch tiếp nhận hàng chục vạn tấn hàng viện trợ quân sự mùa đông 1972",
     imageSource: "Tư liệu Lịch sử Đường sắt Việt Nam",
     quote: {
@@ -485,7 +485,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Ga Lưu Xá & Bản Gia Sàng",
     description: "60 cán bộ đội viên TNXP Đại đội 915 anh dũng hy sinh khi đang bốc xếp hàng nghìn tấn lương thực, vũ khí chi viện trong đợt rải thảm bom B-52 đêm Noel.",
     detailedText: "Đêm Noel 24/12/1972, sau một ngày giải tỏa hàng ngàn tấn hàng chi viện tiền tuyến, giặc Mỹ bất ngờ ném bom rải thảm B-52 trúng khu vực hầm trú ẩn tại ga Lưu Xá, cướp đi sinh mạng của 60 cán bộ, chiến sĩ TNXP Đại đội 915 tuổi đời mười tám, đôi mươi.",
-    image: "/images/relics/di-vat-915.jpg",
+    image: "/images/timeline/10-1972-dai-doi-915.jpg",
     imageCaption: "Kỷ vật chiếc ba lô, lược chải tóc và sổ tay của các liệt sĩ TNXP Đại đội 915 lưu giữ tại Khu di tích Quốc gia",
     imageSource: "Khu di tích Lịch sử Quốc gia Đại đội 915 (Gia Sàng)",
     quote: {
@@ -506,7 +506,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Trận địa Quang Vinh, TP. Thái Nguyên",
     description: "Đại đội 5 (Trung đoàn Pháo cao xạ 256) xuất sắc bắn rơi 2 máy bay ném bom chiến lược B-52 của không quân Mỹ, đập tan huyền thoại pháo đài bay bất khả xâm phạm.",
     detailedText: "Trong chiến dịch Linebacker II (Điện Biên Phủ trên không), Đại đội 5 thuộc Trung đoàn 256 tại trận địa Quang Vinh đã lập kỳ tích bắn rơi tại chỗ 2 siêu pháo đài bay B-52 vào đêm 24 và đêm 26/12/1972, bảo vệ kiên cường vùng trời thành phố.",
-    image: "/images/relics/xac-b52.jpg",
+    image: "/images/timeline/11-1972-ban-roi-b52.jpg",
     imageCaption: "Mảnh xác siêu pháo đài bay B-52 bị bộ đội pháo cao xạ Thái Nguyên bắn rơi đêm Noel 1972",
     imageSource: "Bảo tàng Lịch sử Quân sự Việt Nam",
     quote: {
@@ -527,7 +527,7 @@ export const HISTORICAL_EVENTS: HistoricalEvent[] = [
     location: "Tỉnh Bắc Thái & Chiến trường miền Nam",
     description: "Hơn 40.000 người con ưu tú Thái Nguyên cùng hàng chục vạn tấn vật lực, sản phẩm công nghiệp đã có mặt trên khắp các chiến trường, góp phần giải phóng hoàn toàn miền Nam, thống nhất non sông.",
     detailedText: "Qua 43 đợt tuyển quân, 40.827 người con ưu tú của quê hương Thái Nguyên đã lên đường đánh Mỹ, sát cánh cùng đồng bào cả nước trong Chiến dịch Hồ Chí Minh lịch sử, giải phóng hoàn toàn miền Nam, thống nhất đất nước.",
-    image: "/images/hero/hero-banner.jpg",
+    image: "/images/timeline/12-1975-dai-thang.jpg",
     imageCaption: "Đoàn quân chi viện và thế hệ thanh niên Thái Nguyên trong ngày hội thống nhất non sông 30/4/1975",
     imageSource: "Tư liệu Lịch sử Đảng bộ tỉnh Thái Nguyên",
     quote: {
@@ -644,7 +644,7 @@ export const HISTORICAL_LOCATIONS: HistoricalLocation[] = [
     yearRange: "1959 – 1975",
     description: "Khu liên hợp gang thép đầu tiên của Việt Nam, khởi công năm 1959 và được Bác Hồ về thăm 3 lần. Vừa sản xuất gang thép cho đất nước vừa tổ chức tự vệ bám lò, bám máy đánh trả máy bay Mỹ.",
     significance: "Trái tim công nghiệp của miền Bắc xã hội chủ nghĩa, kiên cường chi viện đắc lực cho kháng chiến giải phóng miền Nam.",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/01-1954-thac-huong.jpg",
     relatedSlug: "chuyen-huong-kinh-te",
   },
   {
@@ -689,7 +689,7 @@ export const HISTORICAL_LOCATIONS: HistoricalLocation[] = [
     yearRange: "1954 – 1975",
     description: "Đại công trình thủy nông đầu mối phục vụ tưới tiêu cho các cánh đồng màu mỡ của Thái Nguyên, Bắc Giang, Bắc Ninh. Nơi Bác Hồ về thăm và động viên cán bộ công nhân ngày 26/12/1954.",
     significance: "Bảo đảm an ninh lương thực cho hậu phương, tạo nền móng vững chắc cho phong trào '5 tấn thóc/ha' chi viện tiền tuyến.",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/01-1954-thac-huong.jpg",
     relatedSlug: "chuyen-huong-kinh-te",
   },
 ];

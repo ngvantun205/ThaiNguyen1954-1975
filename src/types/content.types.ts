@@ -52,6 +52,17 @@ export interface Tribute {
   is_approved: boolean;
 }
 
+export interface Donation {
+  id: string;
+  donor_name: string;
+  amount: number;
+  message?: string;
+  transfer_code?: string;
+  is_anonymous?: boolean;
+  status?: "pending" | "confirmed" | "verified";
+  created_at: string;
+}
+
 export interface MediaItem {
   id: string;
   title: string;

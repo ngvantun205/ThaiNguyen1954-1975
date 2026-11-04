@@ -1,0 +1,26 @@
+=============================================================================
+HƯỚNG DẪN ĐẶT TÊN ẢNH CHO DÒNG THỜI GIAN (1954 – 1975)
+Thư mục: public/images/timeline/
+=============================================================================
+
+Khi bạn muốn thêm hoặc thay đổi ảnh background / tư liệu cho từng mốc lịch sử,
+chỉ cần đặt tên file ảnh (.jpg) đúng theo danh sách 12 mốc dưới đây rồi ghi đè
+vào thư mục này. Website sẽ tự động hiển thị ngay lập tức mà không cần sửa code!
+
+STT | Năm  | Tên File Ảnh                          | Tên Sự Kiện Lịch Sử
+----+------+---------------------------------------+---------------------------------------------------
+01  | 1954 | 01-1954-thac-huong.jpg                | Bác Hồ về thăm công trường đập Thác Huống
+02  | 1959 | 02-1959-gang-thep.jpg                 | Khởi công xây dựng Khu Gang thép Thái Nguyên
+03  | 1964 | 03-1964-bac-ho-tham.jpg               | Bác Hồ thăm Khu Gang thép Thái Nguyên lần cuối
+04  | 1965 | 04-1965-hop-nhat-bac-thai.jpg         | Hợp nhất tỉnh Thái Nguyên và Bắc Kạn
+05  | 1965 | 05-1965-cau-gia-bay.jpg               | Trận đánh ác liệt bảo vệ Cầu Gia Bẩy
+06  | 1966 | 06-1966-may-bay-1000.jpg              | Bắn rơi chiếc máy bay Mỹ thứ 1.000 trên miền Bắc
+07  | 1966 | 07-1966-dan-quan-ha-thuong.jpg        | Dân quân Hà Thượng bắn rơi phản lực bằng súng bộ binh
+08  | 1968 | 08-1968-ham-hao-cong-su.jpg           | Đào đắp 210.400m giao thông hào & 79.600 hầm trú ẩn
+09  | 1972 | 09-1972-cang-can-luu-xa.jpg           | Ga Lưu Xá trở thành "Cảng cạn" lớn nhất miền Bắc
+10  | 1972 | 10-1972-dai-doi-915.jpg               | Khúc tráng ca 60 liệt sĩ TNXP Đại đội 915 Ga Lưu Xá
+11  | 1972 | 11-1972-ban-roi-b52.jpg               | Hạ gục 2 "Pháo đài bay" B-52 (12 ngày đêm 1972)
+12  | 1975 | 12-1975-dai-thang.jpg                 | Chi viện toàn lực cho Đại thắng Mùa Xuân 1975
+=============================================================================
+Định dạng khuyến nghị: ảnh JPG hoặc PNG tỷ lệ ngang (16:9 hoặc 4:3), độ phân giải từ 1200x800px trở lên.
+

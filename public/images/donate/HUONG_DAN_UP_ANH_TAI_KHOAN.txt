@@ -1,0 +1,14 @@
+=============================================================================
+HƯỚNG DẪN TẢI LÊN ẢNH TÀI KHOẢN / MÃ QR CHUYỂN KHOẢN (DONATE)
+Thư mục: public/images/donate/
+=============================================================================
+
+Bạn chỉ cần lưu ảnh mã QR hoặc thông tin tài khoản ngân hàng của bạn vào thư mục này:
+
+1. Đặt tên file là: qr-bank.jpg (hoặc qr-bank.png)
+2. Đường dẫn đầy đủ: public/images/donate/qr-bank.jpg
+
+Hệ thống trên trang Tưởng niệm / Donate sẽ tự động hiển thị ảnh mã QR này
+để người dùng quét mã chuyển khoản trên ứng dụng ngân hàng!
+=============================================================================
+

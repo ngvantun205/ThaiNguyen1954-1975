@@ -7,37 +7,37 @@ const HIGHLIGHT_MILESTONES = [
     year: "1954",
     title: "Bác Hồ thăm đập Thác Huống",
     category: "Khôi phục kinh tế",
-    image: "/images/topics/02-chuyen-huong-kinh-te.jpg",
+    image: "/images/timeline/01-1954-thac-huong.jpg",
   },
   {
     year: "1959",
     title: "Khởi công Khu Gang thép",
     category: "Cái nôi luyện kim",
-    image: "/images/topics/01-vi-the-chien-luoc.jpg",
+    image: "/images/timeline/02-1959-gang-thep.jpg",
   },
   {
     year: "1965",
     title: "Trận đầu cầu Gia Bẩy",
     category: "Khói lửa chống chiến tranh phá hoại",
-    image: "/images/relics/cau-gia-bay.jpg",
+    image: "/images/timeline/05-1965-cau-gia-bay.jpg",
   },
   {
     year: "1966",
     title: "Bắn rơi máy bay thứ 1.000",
     category: "Chiến công hiển hách",
-    image: "/images/relics/phao-cao-xa.jpg",
+    image: "/images/timeline/06-1966-may-bay-1000.jpg",
   },
   {
     year: "1972",
     title: "Khúc tráng ca Lưu Xá & 915",
     category: "Địa chỉ đỏ bất tử",
-    image: "/images/topics/04-dai-doi-915.jpg",
+    image: "/images/timeline/10-1972-dai-doi-915.jpg",
   },
   {
     year: "1975",
     title: "Đại thắng Mùa Xuân 1975",
     category: "Non sông liền một dải",
-    image: "/images/relics/dai-doi-915.jpg",
+    image: "/images/timeline/12-1975-dai-thang.jpg",
   },
 ];
 

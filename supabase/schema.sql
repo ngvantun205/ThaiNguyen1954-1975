@@ -81,6 +81,40 @@ WITH CHECK (char_length(message) >= 5 AND char_length(message) <= 1000);
 GRANT EXECUTE ON FUNCTION public.light_a_candle() TO anon, authenticated;
 
 -- =========================================================================
+-- 6. BẢNG donations: Quản lý đóng góp, ủng hộ & sao kê minh bạch phân trang
+-- =========================================================================
+CREATE TABLE IF NOT EXISTS public.donations (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    donor_name VARCHAR(150) NOT NULL,
+    amount BIGINT NOT NULL CHECK (amount > 0),
+    message TEXT,
+    transfer_code VARCHAR(50),
+    is_anonymous BOOLEAN DEFAULT false,
+    status VARCHAR(30) DEFAULT 'confirmed', -- 'pending', 'confirmed', 'verified'
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_donations_created_at 
+ON public.donations (created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_donations_status 
+ON public.donations (status);
+
+ALTER PUBLICATION supabase_realtime ADD TABLE public.donations;
+
+ALTER TABLE public.donations ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public read donations"
+ON public.donations
+FOR SELECT
+USING (true);
+
+CREATE POLICY "Public insert donations"
+ON public.donations
+FOR INSERT
+WITH CHECK (amount > 0 AND char_length(donor_name) >= 1);
+
+-- =========================================================================
 -- HƯỚNG DẪN:
 -- 1. Mở Supabase Dashboard -> Vào mục SQL Editor.
 -- 2. Dán toàn bộ nội dung file này và bấm "Run".

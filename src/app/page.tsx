@@ -5,7 +5,7 @@ import HistoricalMapSection from "@/components/home/HistoricalMapSection";
 import TopicCards from "@/components/home/TopicCards";
 import CandleLightWidget from "@/components/memorial/CandleLightWidget";
 import Link from "next/link";
-import { BookOpen, Flame, Compass, ArrowRight, Shield, MapPin, Award } from "lucide-react";
+import { BookOpen, Flame, Compass, ArrowRight, Shield, MapPin, Award, Heart } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -47,11 +47,11 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
             <Link
-              href="/tuong-niem"
+              href="/quyen-gop-915"
               className="px-6 py-3.5 rounded-lg bg-[#FAF5ED] hover:bg-[#F3EBDD] text-[#8D2926] font-bold text-center text-sm shadow-md transition-all flex items-center justify-center gap-2"
             >
-              <Flame className="w-4 h-4 text-[#8D2926] fill-[#8D2926]" />
-              <span>Gửi lời tri ân</span>
+              <Heart className="w-4 h-4 text-[#8D2926] fill-[#8D2926]" />
+              <span>Quyên góp 915 &amp; Sao kê</span>
             </Link>
             <Link
               href="/tu-lieu"
